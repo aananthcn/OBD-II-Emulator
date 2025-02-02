@@ -55,7 +55,7 @@ set(sample_dir
 include_directories(${include_dir})
 
 add_library(
-  obd_ii_emulator
+  obd_ii_emulator SHARED
   ${source_dir}/can_frame.cpp
   ${source_dir}/can_driver.cpp
   ${source_dir}/obd_service.cpp
@@ -63,6 +63,11 @@ add_library(
   ${source_dir}/obd_emulator.cpp
   ${source_dir}/packet_buffer.cpp
   ${source_dir}/serial_communication.cpp
+)
+
+set_target_properties(obd_ii_emulator PROPERTIES
+    VERSION 0.1
+    SOVERSION 0
 )
 
 target_link_libraries(
